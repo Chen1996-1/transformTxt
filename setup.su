@@ -1,1 +1,1 @@
-{'delimiter': ', ', 'delete_line': '1', 'insert_line': '1', 'delete_col': '1', 'insert_col': '1', 'exchange_col': '1', 'merge_col': '1', 'split_col': '1'}
+{'delimiter': ', ', 'delete_line': '', 'insert_line': '', 'delete_col': '', 'insert_col': '', 'exchange_col': '', 'merge_col': '', 'split_col': ''}

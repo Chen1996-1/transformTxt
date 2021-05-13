@@ -4,6 +4,8 @@ from tkinter import messagebox, filedialog, ttk
 from tkinter.ttk import Treeview
 import numpy as np
 
+from Methods import Methods
+
 
 class AppliGui():
 
