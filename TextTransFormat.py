@@ -85,6 +85,7 @@ class TkinterModel():
   def __init__(self, window): 
     print('TkinterModel')
     self.window = window
+    self.rander_menu()
     self.log_file_opt = options = {}  
     options['defaultextension'] = '.txt'  
     options['filetypes'] = [('txt文件', '.txt'),('CSV文件', '.csv'), ('其他文件', '.*'),]  
@@ -224,13 +225,13 @@ class TkinterModel():
 
   def rander_menu(self):
     print('rander_menu')
+    self.readSetup()
     menubar = Menu(self.window)
     capability_menu = Menu(menubar, tearoff = False)
     menubar.add_cascade(label = '菜单', menu = capability_menu)
     capability_menu.add_command(label = '打开单个文件', command=self.openSingleFile)
     capability_menu.add_command(label='打开多个文件', command=self.openMutilFiles )
 
-    default_delimiter_str, default_delete_line_str, default_delete_col_str, default_exchange_col_str, default_merge_col_str, default_split_col_str = self.readSetup()
 
     self.window.config(menu=menubar)
     self.window.geometry('600x450')
@@ -238,9 +239,9 @@ class TkinterModel():
     programFrame = Frame(self.window)
 
     delete_line = Label(programFrame, text="删除行").grid(row=0, column=0)
-    self.delete_line_entry = Entry(programFrame, width=5, textvariable=default_delete_line_str)
+    self.delete_line_entry = Entry(programFrame, width=5, textvariable=self.default_delete_line_str)
     self.delete_line_entry.grid(row=0, column=1)
-    self.delete_line_entry.insert(0, default_delete_line_str)
+    self.delete_line_entry.insert(0, self.default_delete_line_str)
 
     # insert_line= Label(programFrame, text="插入行").grid(row=0, column=2)
     # self.insert_line_entry = Entry(programFrame, width=5)
@@ -250,7 +251,7 @@ class TkinterModel():
     delete_col= Label(programFrame, text="删除列").grid(row=0, column=4)
     self.delete_col_entry= Entry(programFrame, width=5)
     self.delete_col_entry.grid(row=0, column=5)
-    self.delete_col_entry.insert(0, default_delete_col_str)
+    self.delete_col_entry.insert(0, self.default_delete_col_str)
 
     # insert_col= Label(programFrame, text="插入列").grid(row=0, column=6)
     # self.insert_col_entry = Entry(programFrame, width=5)
@@ -260,22 +261,22 @@ class TkinterModel():
     delimiter_label = Label(programFrame, text="分隔符").grid(row=0, column=8)
     self.delimiter_entry = Entry(programFrame, width=5)
     self.delimiter_entry.grid(row=0, column=9)
-    self.delimiter_entry.insert(0, default_delimiter_str)
+    self.delimiter_entry.insert(0, self.default_delimiter_str)
 
     exchange_col= Label(programFrame, text="交换列").grid(row=1, column=0, pady=10)
     self.exchange_col_entry = Entry(programFrame, width=10)
     self.exchange_col_entry.grid(row=1, column=1, pady=10)
-    self.exchange_col_entry.insert(0, default_exchange_col_str)
+    self.exchange_col_entry.insert(0, self.default_exchange_col_str)
 
     merge_col= Label(programFrame, text="合并列").grid(row=1, column=2, pady=10)
     self.merge_col_entry = Entry(programFrame, width=10)
     self.merge_col_entry.grid(row=1, column=3, pady=10)
-    self.merge_col_entry.insert(0, default_merge_col_str)
+    self.merge_col_entry.insert(0, self.default_merge_col_str)
 
     split_col= Label(programFrame, text="拆分列").grid(row=1, column=4, pady=10)
     self.split_col_entry = Entry(programFrame, width=10)
     self.split_col_entry.grid(row=1, column=5, pady=10)
-    self.split_col_entry.insert(0, default_split_col_str)
+    self.split_col_entry.insert(0, self.default_split_col_str)
 
     submit_button = Button(programFrame, text="保存参数", command=self.writeSetup)
     submit_button.grid(row=1, column=6, ipadx=15, columnspan=8)
