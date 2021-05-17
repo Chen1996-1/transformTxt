@@ -137,9 +137,7 @@ class TkinterModel():
     print('get_args')
     self.current_delimiter_str = self.delimiter_entry.get()
     self.current_delete_line_str = self.delete_line_entry.get()
-    self.current_insert_line_str = self.insert_line_entry.get()
     self.current_delete_col_str = self.delete_col_entry.get()
-    self.current_insert_col_str = self.insert_col_entry.get()
     self.current_exchange_col_str = self.exchange_col_entry.get()
     self.current_merge_col_str = self.merge_col_entry.get()
     self.current_split_col_str = self.split_col_entry.get()
@@ -174,8 +172,6 @@ class TkinterModel():
     print('write_to_new')
     file_name = self.new_file_path
     np.savetxt(file_name, arr, fmt='%s', delimiter=self.current_delimiter_str)
-
-
 
 
   def deal(self, arr):
@@ -243,20 +239,11 @@ class TkinterModel():
     self.delete_line_entry.grid(row=0, column=1)
     self.delete_line_entry.insert(0, self.default_delete_line_str)
 
-    # insert_line= Label(programFrame, text="插入行").grid(row=0, column=2)
-    # self.insert_line_entry = Entry(programFrame, width=5)
-    # self.insert_line_entry.grid(row=0, column=3)
-    # self.insert_line_entry.insert(0, default_insert_line_str)
 
     delete_col= Label(programFrame, text="删除列").grid(row=0, column=4)
     self.delete_col_entry= Entry(programFrame, width=5)
     self.delete_col_entry.grid(row=0, column=5)
     self.delete_col_entry.insert(0, self.default_delete_col_str)
-
-    # insert_col= Label(programFrame, text="插入列").grid(row=0, column=6)
-    # self.insert_col_entry = Entry(programFrame, width=5)
-    # self.insert_col_entry.grid(row=0, column=7)
-    # self.insert_col_entry.insert(0, default_insert_col_str)
 
     delimiter_label = Label(programFrame, text="分隔符").grid(row=0, column=8)
     self.delimiter_entry = Entry(programFrame, width=5)
